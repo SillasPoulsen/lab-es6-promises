@@ -71,31 +71,31 @@ function makeSteak() {
   obtainInstruction("steak", 0)
     .then((step0) => {
       document.querySelector("#steak").innerHTML += `<li>${step0}</li>`;
-      return steak[1];
+      return obtainInstruction("steak", 1);
     })
     .then((step1) => {
       document.querySelector("#steak").innerHTML += `<li>${step1}</li>`;
-      return steak[2];
+      return obtainInstruction("steak", 2);
     })
     .then((step2) => {
       document.querySelector("#steak").innerHTML += `<li>${step2}</li>`;
-      return steak[3];
+      return obtainInstruction("steak", 3);
     })
     .then((step3) => {
       document.querySelector("#steak").innerHTML += `<li>${step3}</li>`;
-      return steak[4];
+      return obtainInstruction("steak", 4);
     })
     .then((step4) => {
       document.querySelector("#steak").innerHTML += `<li>${step4}</li>`;
-      return steak[5];
+      return obtainInstruction("steak", 5);
     })
     .then((step5) => {
       document.querySelector("#steak").innerHTML += `<li>${step5}</li>`;
-      return steak[6];
+      return obtainInstruction("steak", 6);
     })
     .then((step6) => {
       document.querySelector("#steak").innerHTML += `<li>${step6}</li>`;
-      return steak[7];
+      return obtainInstruction("steak", 7);
     })
     .then((step7) => {
       document.querySelector("#steak").innerHTML += `<li>${step7}</li>`;
@@ -153,6 +153,34 @@ makeBroccoli();
 
 // Bonus 2 - Promise all
 
+const pr0 = obtainInstruction("brusselsSprouts", 0);
+const pr1 = obtainInstruction("brusselsSprouts", 1);
+const pr2 = obtainInstruction("brusselsSprouts", 2);
+const pr3 = obtainInstruction("brusselsSprouts", 3);
+const pr4 = obtainInstruction("brusselsSprouts", 4);
+const pr5 = obtainInstruction("brusselsSprouts", 5);
+const pr6 = obtainInstruction("brusselsSprouts", 6);
+async function makeBrusselSprouts() {
+  try {
+    const values = await Promise.all([pr0, pr1, pr2, pr3, pr4, pr5, pr6]);
+
+    values.forEach((instruction) => {
+      document.querySelector(
+        "#brusselsSprouts"
+      ).innerHTML += `<li>${instruction}</li>`;
+    });
+
+    document.querySelector(
+      "#brusselsSprouts"
+    ).innerHTML += `<li>Brussels sprouts are ready!</li>`;
+    document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+  } catch (error) {
+    console.log(err);
+  }
+}
+makeBrusselSprouts();
+
+/*
 Promise.all([makePotatoes, makeSteak, makeBroccoli]).then(() => {
   obtainInstruction("brusselsSprouts", 0)
     .then((step0) => {
@@ -206,3 +234,4 @@ Promise.all([makePotatoes, makeSteak, makeBroccoli]).then(() => {
       document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
     });
 });
+*/
